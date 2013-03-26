@@ -4,15 +4,50 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	<meta name="msapplication-TileImage" content="/dpdeng.png"/>
-	<meta name="msapplication-TileColor" content="#015565"/>
+	<meta name="msapplication-TileColor" content="#FF9900"/>
 	
 	<meta name="msapplication-badge" 
 	      value="frequency=5;polling-uri=http://playground.tamashenning.ro/BadgeUpdate.xml" />
+	
+	<script>
+	window.onload = function()
+	{
+	    try {
+	        if (window.external.msIsSiteMode()) {
+	            // Continue initialization.
+	        }
+	        else {
+	            // Display prompt.
+	            document.getElementById('divPinSite').style.display = "block";
+	        }
+	    }
+	    catch (ex) {
+	        // Fail silently.
+	    }
+	}
+	
+	function addSite()
+	{
+	    try {
+	        window.external.msAddSiteMode();
+	    }
+	    catch (e) {
+	        alert("This feature is only available in Internet Explorer 9.");
+	    }
+	}
+	</script>
+	
 	<title>index</title>
 
 	<!-- Date: 2013-03-25 -->
 </head>
 <body>
-
+	<div id="divPinSite" style="display: none">
+		<button onclick="addSite();">Add Site to Start Menu</button>
+	</div>
+	
+	<div id="hello">
+		Hello
+	</div>
 </body>
 </html>
